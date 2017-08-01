@@ -23,20 +23,20 @@ $(document).ready(function(){
 
 });
 
-$(document).ready(function(){
-      $('input[name=firstName]').blur(function(){
+// $(document).ready(function(){
+//       $('input[name=firstName]').blur(function(){
 
-      var className = $('input[name=firstName]').attr('class')
-      var className1 = $('input[name=email]').attr('class')
-      console.log(className);
-      var val = className.split(' ')
-      var val1 = className1.split(' ')
-      for(var i = 0; i<val.length; i++){
-            console.log(val[i])
-            if(val[i]=="ng-touched" && val.indexOf("ng-invalid")){
-                  $('.home-banner').css('cssText', 'height:900px !important;');
-            }
-      }
-      });
+//       var className = $('input[name=firstName]').attr('class')
+//       var className1 = $('input[name=email]').attr('class')
+//       console.log(className);
+//       var val = className.split(' ')
+//       var val1 = className1.split(' ')
+//       for(var i = 0; i<val.length; i++){
+//             console.log(val[i])
+//             if(val[i]=="ng-touched" && val.indexOf("ng-invalid")){
+//                   $('.home-banner').css('cssText', 'height:900px !important;');
+//             }
+//       }
+//       });
       
 })
