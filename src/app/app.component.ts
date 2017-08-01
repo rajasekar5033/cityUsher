@@ -20,15 +20,13 @@ export class AppComponent implements OnInit {
   months = [];
   years = [];
   submited = false;
-  public city: FormControl;
+  //public city: FormControl;
 
-  @ViewChild("search")
-  public searchElementRef: ElementRef;
+  // @ViewChild("search")
+  // public searchElementRef: ElementRef;
 
   
-  constructor(private dateOfBirth: DateService, private _fb: FormBuilder,
-                      private mapsAPILoader: MapsAPILoader,
-                      private ngZone: NgZone){
+  constructor(private dateOfBirth: DateService, private _fb: FormBuilder){
     this.days = dateOfBirth.days;
     this.months = dateOfBirth.months;
     this.years = dateOfBirth.years;
@@ -57,27 +55,6 @@ export class AppComponent implements OnInit {
         'check': new FormControl('', Validators.required)
       
       
-    });
-    this.city = new FormControl();
-
-    //Google Map
-    this.mapsAPILoader.load().then(() => {
-      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
-        types: ["address"]
-      });
-      autocomplete.addListener("place_changed", () => {
-        this.ngZone.run(() => {
-          //get the place result
-          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
-          //verify result
-          if (place.geometry === undefined || place.geometry === null) {
-            return;
-          }
-
-          //set latitude, longitude and zoom
-        });
-      });
     });
   }
     
