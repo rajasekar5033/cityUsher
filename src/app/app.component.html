@@ -85,7 +85,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<div class="md-form">
 										<input name="city" id="city" class="form-control" type="text" 
-                                        formControlName='city' googleplace >
+                                        formControlName='city' #search >
 										<label for="city">City Of Residence</label>
 										<span class="error" *ngIf="!signUpForm.get('city').valid &&
 										signUpForm.get('city').touched && signUpForm.get('city').dirty || submited">

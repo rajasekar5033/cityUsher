@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, NgZone, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, Validator, FormBuilder } from '@angular/forms'
+import { MapsAPILoader } from '@agm/core';
 
 import { PasswordMatch } from './shared/passwordMatch';
 import { Dob } from './shared/dob';
@@ -19,8 +20,15 @@ export class AppComponent implements OnInit {
   months = [];
   years = [];
   submited = false;
+  public city: FormControl;
+
+  @ViewChild("search")
+  public searchElementRef: ElementRef;
+
   
-  constructor(private dateOfBirth: DateService, private _fb: FormBuilder){
+  constructor(private dateOfBirth: DateService, private _fb: FormBuilder,
+                      private mapsAPILoader: MapsAPILoader,
+                      private ngZone: NgZone){
     this.days = dateOfBirth.days;
     this.months = dateOfBirth.months;
     this.years = dateOfBirth.years;
@@ -48,11 +56,32 @@ export class AppComponent implements OnInit {
         
         'check': new FormControl('', Validators.required)
       
-
+      
     });
+    this.city = new FormControl();
 
-    
+    //Google Map
+    this.mapsAPILoader.load().then(() => {
+      let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
+        types: ["address"]
+      });
+      autocomplete.addListener("place_changed", () => {
+        this.ngZone.run(() => {
+          //get the place result
+          let place: google.maps.places.PlaceResult = autocomplete.getPlace();
+
+          //verify result
+          if (place.geometry === undefined || place.geometry === null) {
+            return;
+          }
+
+          //set latitude, longitude and zoom
+        });
+      });
+    });
   }
+    
+  
 
 
   onSubmit(form: FormGroup){
