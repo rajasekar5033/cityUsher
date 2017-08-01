@@ -240,12 +240,12 @@ a .fa-question-circle{
 	padding-left: 0px !important;
 }
 .md-form, .md-form .btn{
-	margin-top: 2.5rem !important;
-	margin-bottom: 2.5rem !important;
+	margin-top: 1.5rem !important;
+	margin-bottom: 1.5rem !important;
 }
 
 .md-form label{
-	top: -0.2rem;
+	top: 0.8rem;
 }
 
 .sign-up{
