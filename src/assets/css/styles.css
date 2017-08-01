@@ -77,7 +77,7 @@ body{
 	background-position-y: center;
 	background-repeat: no-repeat;
 	background-size: cover !important;
-	height: 800px !important;
+	height: 900px !important;
 	padding-bottom: 70px !important;
 	padding-left: 0 !important;
 	padding-right: 0 !important;
@@ -220,7 +220,7 @@ input[type="date"]:focus:not([readonly]), input[type="datetime-local"]:focus:not
 }
 .second-container .birthday{
 	font-family: "glacial_indifferenceregular" !important;
-	margin-top: 20px;
+	margin-top: 5px;
 	margin-bottom: 30px;
 }
 
@@ -229,7 +229,7 @@ a .fa-question-circle{
 }
 
 .second-container p{
-	margin-top: 35px;
+	margin-top: 20px !important;
 	font-size: 16px;
 	padding-bottom: 10px;
 	font-family: "glacial_indifferenceregular" !important;
@@ -237,7 +237,9 @@ a .fa-question-circle{
 
 .form-control{
 	margin-top: 1.0rem;
+	padding: 5px 5px !important;
 	padding-left: 0px !important;
+	
 }
 .md-form, .md-form .btn{
 	margin-top: 1.5rem !important;
