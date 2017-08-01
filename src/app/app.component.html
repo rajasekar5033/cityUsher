@@ -1,0 +1,249 @@
+<main>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="home-banner">
+                        <div class="container">
+                            <img src="assets/images/logo.png" class="img-responsive">
+                            <h3 class="home-head">
+                              Lorem Ipsum is simply dummy text.
+                            </h3>
+                            <p class="home-title">
+                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                Lorem
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-7">
+                    
+                    <div class="second-container">
+						<h3 class="signup">Sign up</h3>
+						<div class="form-container">
+                            <form [formGroup]="signUpForm" (ngSubmit)="onSubmit(signUpForm)">
+							<div class="row first-row">
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="md-form">
+										<input name="firstName" id="firstName" class="form-control" type="text"
+                                        formControlName='firstName'>
+										<label for="firstName">First Name</label>
+										<span class="error" *ngIf="!signUpForm.get('firstName').valid &&
+										signUpForm.get('firstName').touched && signUpForm.get('firstName').dirty
+										|| submited">
+										<span class="error" *ngIf="signUpForm.get('firstName').hasError('required')">
+											First Name should be required.
+										</span>
+										<span *ngIf="signUpForm.get('firstName').hasError('pattern')">
+											First Name should not allow numbers and special characters.
+										</span>
+										<span *ngIf="signUpForm.get('firstName').hasError('minlength')">
+											Minimum Character for First Name should be 3.
+										</span>
+										<span *ngIf="signUpForm.get('firstName').hasError('maxlength')">
+											First Name you entered exeeds the maximum length.
+										</span>
+										</span>
+									
+									
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="md-form">
+										<input name="lastName" id="lastName" class="form-control" type="text"
+                                        formControlName='lastName'>
+										<label for="lastName">Last Name</label>
+										<span class="error" *ngIf="!signUpForm.get('lastName').valid &&
+										signUpForm.get('lastName').touched && signUpForm.get('lastName').dirty
+										|| submited">
+										<span class="error" *ngIf="signUpForm.get('lastName').hasError('required')">
+											Last Name should be required.
+										</span>
+										<span *ngIf="signUpForm.get('lastName').hasError('pattern')">
+											Last Name should not allow numbers and special characters.
+										</span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="md-form">
+										<input name="email" id="email" class="form-control" type="text"
+                                        formControlName='email'>
+										<label for="email">Email</label>
+										<span class="error" *ngIf="!signUpForm.get('email').valid &&
+										signUpForm.get('email').touched && signUpForm.get('email').dirty
+										|| submited">
+										<span class="error" *ngIf="signUpForm.get('email').hasError('required') || 
+										signUpForm.get('email').hasError('pattern')">
+											Please Enter Valid Email
+										</span>
+										
+										</span>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<div class="md-form">
+										<input name="city" id="city" class="form-control" type="text" 
+                                        formControlName='city' googleplace >
+										<label for="city">City Of Residence</label>
+										<span class="error" *ngIf="!signUpForm.get('city').valid &&
+										signUpForm.get('city').touched && signUpForm.get('city').dirty || submited">
+										<span class="error" *ngIf="signUpForm.get('city').hasError('required')">
+											Please Enter your City
+										</span>
+										</span>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div formGroupName='password'>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="md-form">
+											<input name="password" id="password" class="form-control" type="password"
+											formControlName='pass'>
+											<label for="password">Password</label>
+											<span class="error" *ngIf="!signUpForm.get('password.pass').valid &&
+										signUpForm.get('password.pass').touched && signUpForm.get('password.pass').dirty
+										|| submited">
+										<span class="error" *ngIf="signUpForm.get('password.pass').hasError('required')">
+											Password should be required.
+										</span>
+										<span *ngIf="signUpForm.get('password.pass').hasError('pattern')">
+											Password should contain atleast one lower case letter, one upper case letter,
+											one special character,  and a number(maximum length(4-15)).
+										</span>
+											
+										</span>
+										<span class="error" *ngIf="signUpForm.get('password.pass').valid && signUpForm.get('password.confirmPass').valid
+								&& !signUpForm.get('password').valid">
+									Paswword and Confirm Password should get match.
+								</span>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-6 col-xs-12">
+										<div class="md-form">
+											<input name="" id="conformPassword" class="form-control" type="password"
+											formControlName='confirmPass'>
+											<label for="confirmPassword">Confirm Password</label>
+											<span class="error" *ngIf="!signUpForm.get('password.confirmPass').valid &&
+										signUpForm.get('password.confirmPass').touched && signUpForm.get('password.confirmPass').dirty
+										|| submited">
+										<span class="error" *ngIf="signUpForm.get('password.confirmPass').hasError('required')">
+											Confirm Password should be required.
+										</span>
+										<span *ngIf="signUpForm.get('password.confirmPass').hasError('pattern')">
+											Confirm Password should contain atleast one lower case letter, one upper case letter,
+											one special character,  and a number(maximum length(4-15)).
+										</span>
+										</span>
+										
+										</div>
+									</div>
+								</div>
+															
+							</div>
+							<h3 class="birthday">Birthday &nbsp; <a href="" data-toggle="tooltip" title="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.">
+							<span><i class="fa fa-question-circle" aria-hidden="true"></i></span></a></h3>
+
+							<div class="birth-mobile">
+								<div class="row last-row">
+									<div formGroupName='birth'>
+										<div class="month-field">
+										<div class="col-md-4 col-sm-4 col-xs-12 month birth-spacing">
+											<label for="month">Month</label><br/>
+												<select class="selectpicker" title='month' formControlName='month'>
+													<option *ngFor="let month of months">{{ month }}</option>
+													
+												</select>
+										</div>
+									</div>
+							
+										<div class="col-md-4 col-sm-4 col-xs-12 tab birth-spacing">
+											<label for="day">Day</label><br />
+												<select class="selectpicker" title='day' formControlName='day'>
+													<option *ngFor="let day of days">{{ day }}</option>
+													
+												</select>
+										</div>
+										<div class="col-md-4 col-sm-4 col-xs-12">
+											<label for="year">Year</label><br />
+											<select class="selectpicker" title='year' formControlName='year'>
+												<option *ngFor="let year of years">{{ year }}</option>
+												
+											</select>
+										</div>
+									</div>
+									
+								</div>
+								<div class="span-error">
+									<span class="error" *ngIf= "!signUpForm.get('birth').valid && 
+									signUpForm.get('birth.month').dirty && signUpForm.get('birth.day').dirty
+									&& signUpForm.get('birth.year').dirty || submited" >
+										
+										<span *ngIf="!signUpForm.get('birth.month').valid || signUpForm.get('birth').hasError('maxDate')">
+											Please select valid data(make sure month day relation)
+										</span>
+									</span>
+									<span class="error" *ngIf="signUpForm.get('birth.month').valid && signUpForm.get('birth.day').valid
+									&& signUpForm.get('birth.year').valid && signUpForm.get('birth').hasError('ageValidation')">
+										Age limit should be 18.
+									</span>
+								</div>
+							</div>
+						
+                    
+                    <p> <input type="checkbox" class="accept" disabled=true formControlName="check"
+					style="width: auto;"> &nbsp; &nbsp; By <a data-toggle="modal" data-target="#myModal">signing up</a> , I agree to CityUsher's terms of service, 
+					non-discrimination policy,<br /> tourist refund policy and guarantee terms.</p>
+					<div class="error-space">
+						<span class="error" *ngIf="!signUpForm.get('check').valid && signUpForm.get('check').touched
+					|| submited">
+						<div *ngIf="!signUpForm.get('check').valid" style="margin-bottom: 15px">
+							Please accept the CityUsher Terms and conditions by selecting Signing Up link
+						</div>
+					</span>
+					</div>
+						<div class="container btn-container">
+							<button class="sign-up btn" type="submit">Sign up now!</button>
+						</div>					
+						
+						
+							<!-- Trigger the modal with a button -->
+							
+
+							<!-- Modal -->
+							<div class="modal fade" id="myModal" role="dialog">
+								<div class="modal-dialog">
+								
+								<!-- Modal content-->
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Terms and Conditions</h4>
+									</div>
+									<div class="modal-body modal-body-custom">
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+										</p>
+									</div>
+									<div class="modal-footer row">
+										<button type="button" class="accept-t-c col-md-offset-2 
+										col-md-3 col-xs-offset-1 col-xs-10 col-sm-offset-2 col-sm-3" 
+										data-dismiss="modal" (click)="buttonClick()">Accept</button>
+										<button type="button" class="cancel-t-c col-md-offset-1 col-md-3 col-xs-offset-1 
+										col-xs-10 col-sm-offset-1 col-sm-3" data-dismiss="modal">Cancel</button>
+									</div>
+								</div>
+								
+							</div>
+						</div>
+							
+                        </form>
+					</div>
+                    </div>
+                    
+                </div>  
+            </div>	
+                
+	</main>
+		
