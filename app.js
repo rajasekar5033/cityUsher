@@ -18,6 +18,6 @@ app.get('*', (req,res)=>{
     
 });
 
-const port = process.env.PORT | '2000';
+const port = process.env.PORT || '2000';
 const server = http.createServer(app);
 server.listen(port, ()=> console.log("Port Listening"));
