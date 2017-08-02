@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, NgZone, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, NgZone, ViewChild} from '@angular/core';
 import { FormGroup, FormControl, Validators, Validator, FormBuilder } from '@angular/forms'
 import { MapsAPILoader } from '@agm/core';
 
@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   months = [];
   years = [];
   submited = false;
+  btName = "Accept"
   //public city: FormControl;
 
   // @ViewChild("search")
@@ -36,7 +37,8 @@ export class AppComponent implements OnInit {
     this.signUpForm = this._fb.group({
       'firstName' : ['', [Validators.required, Validators.minLength(3),
       Validators.maxLength(15), Validators.pattern(/^[a-zA-Z ]*$/)]],
-      'lastName' : new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]),
+      'lastName' : new FormControl('', [Validators.required,
+        Validators.maxLength(15), Validators.pattern(/^[a-zA-Z ]*$/)]),
       'email': new FormControl('', [Validators.required, Validators.pattern(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)]),
       'city': new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z_\- ]+$/)]),
       'password': this._fb.group({
@@ -56,6 +58,7 @@ export class AppComponent implements OnInit {
       
       
     });
+      
   }
     
   
@@ -64,15 +67,24 @@ export class AppComponent implements OnInit {
   onSubmit(form: FormGroup){
     console.log(this.signUpForm);
     this.submited = true;
-
-    console.log(form.controls.birth.errors, 'lllllll')
-
   }
 
-  buttonClick(){
+  buttonClick(val: string){
     console.log('button clicked');
-    this.signUpForm.get('check').setValue('true');
+      this.signUpForm.get('check').setValue(val);
   }
-
- 
+  statusChange(){
+    if(this.signUpForm.get('check').valid){
+      this.buttonClick("");
+    }else if(!this.signUpForm.get('check').valid){
+      this.signUpForm.get('check').setValue(true);
+    }
+  }
+  checkControl(){
+    if(this.signUpForm.get('check').valid){
+      this.btName = "Remove";
+    }else if(!this.signUpForm.get('check').valid){
+      this.btName = "Accept";
+    }
+  }
 }
